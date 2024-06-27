@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: react-image
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "300Mi" #adjust the memory limits as per your application or you can request as well
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
